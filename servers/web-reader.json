@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.ameerasofficial-ai/web-reader",
+  "title": "Web Reader Pro",
+  "description": "Read pages, PDFs, tables, screenshots; research and fact-check with verified quotes. Pay per call.",
+  "version": "1.0.0",
+  "websiteUrl": "https://web-reader.ameeras-official.workers.dev",
+  "repository": {
+    "url": "https://github.com/ameerasofficial-ai/agent-toolkit",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://web-reader.ameeras-official.workers.dev/mcp",
+      "headers": [
+        {
+          "name": "X-API-Key",
+          "description": "Optional Teams plan key (prepaid credits). Without it: 3 free calls/day, then x402 USDC per call.",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
