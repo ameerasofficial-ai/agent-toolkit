@@ -1,0 +1,26 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.ameerasofficial-ai/location-toolkit",
+  "title": "Location Toolkit",
+  "description": "Global geocoding helpers: Plus Codes, reverse lookup, local time, postal checks, distance.",
+  "version": "1.0.0",
+  "websiteUrl": "https://location-toolkit.ameeras-official.workers.dev",
+  "repository": {
+    "url": "https://github.com/ameerasofficial-ai/agent-toolkit",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://location-toolkit.ameeras-official.workers.dev/mcp",
+      "headers": [
+        {
+          "name": "X-API-Key",
+          "description": "Optional Teams plan key (prepaid credits). Without it: 3 free calls/day, then x402 USDC per call.",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
