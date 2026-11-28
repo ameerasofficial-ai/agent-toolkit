@@ -1,0 +1,13 @@
+{
+  "name": "sanctions-screening",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "apify": "^3.2.0"
+  }
+}

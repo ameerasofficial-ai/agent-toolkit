@@ -1,0 +1,75 @@
+{
+  "actorSpecification": 1,
+  "name": "sanctions-screening",
+  "title": "Sanctions Screening - US Consolidated List & UN (Fuzzy)",
+  "description": "Screen people and companies against the US Consolidated Screening List (OFAC SDN and more, Commerce Entity List) and the UN Security Council list, with fuzzy name matching and match scores.",
+  "version": "1.0",
+  "buildTag": "latest",
+  "dockerfile": "./Dockerfile",
+  "readme": "./README.md",
+  "input": {
+    "title": "Sanctions Screening input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+      "names": {
+        "title": "Names to screen",
+        "type": "array",
+        "description": "People or company names, one per line.",
+        "editor": "stringList",
+        "prefill": [
+          "Banco Nacional de Cuba"
+        ]
+      },
+      "entityType": {
+        "title": "Entity type",
+        "type": "string",
+        "enum": [
+          "any",
+          "individual",
+          "entity"
+        ],
+        "enumTitles": [
+          "Any",
+          "Person",
+          "Company / organisation"
+        ],
+        "default": "any",
+        "description": "Optional filter."
+      },
+      "threshold": {
+        "title": "Match threshold (0-100)",
+        "type": "integer",
+        "minimum": 50,
+        "maximum": 100,
+        "default": 85,
+        "description": "Lower finds more possible matches."
+      },
+      "maxItems": {
+        "title": "Max names",
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5000,
+        "default": 500,
+        "description": "Safety limit for one run."
+      }
+    },
+    "required": [
+      "names"
+    ]
+  },
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "views": {
+        "overview": {
+          "title": "Results",
+          "transformation": {},
+          "display": {
+            "component": "table"
+          }
+        }
+      }
+    }
+  }
+}
