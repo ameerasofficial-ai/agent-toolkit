@@ -1,0 +1,71 @@
+{
+  "actorSpecification": 1,
+  "name": "web-page-reader",
+  "title": "Web Page Reader - Clean Markdown for AI & LLMs",
+  "description": "Turn any web page, PDF, Word or Excel file into clean Markdown or text for AI agents and LLMs. Falls back to a real browser for JavaScript pages. Pay only for pages that succeed.",
+  "version": "1.0",
+  "buildTag": "latest",
+  "dockerfile": "./Dockerfile",
+  "readme": "./README.md",
+  "input": {
+    "title": "Web Page Reader input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+      "urls": {
+        "title": "URLs to read",
+        "type": "array",
+        "description": "Web pages or document links (PDF, DOCX, XLSX) to convert.",
+        "editor": "stringList",
+        "prefill": [
+          "https://example.com"
+        ]
+      },
+      "format": {
+        "title": "Output format",
+        "type": "string",
+        "enum": [
+          "markdown",
+          "text"
+        ],
+        "enumTitles": [
+          "Markdown",
+          "Plain text"
+        ],
+        "default": "markdown",
+        "description": "Markdown keeps headings, links and tables."
+      },
+      "renderJavaScript": {
+        "title": "Always use a real browser",
+        "type": "boolean",
+        "default": false,
+        "description": "Force browser rendering. By default it is used automatically only when a page looks empty."
+      },
+      "maxItems": {
+        "title": "Max URLs",
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 1000,
+        "default": 100,
+        "description": "Safety limit for one run."
+      }
+    },
+    "required": [
+      "urls"
+    ]
+  },
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "views": {
+        "overview": {
+          "title": "Results",
+          "transformation": {},
+          "display": {
+            "component": "table"
+          }
+        }
+      }
+    }
+  }
+}
