@@ -1,0 +1,51 @@
+{
+  "actorSpecification": 1,
+  "name": "safe-web-reader",
+  "title": "Safe Web Reader - Prompt-Injection Shield for AI Agents",
+  "description": "Read a web page for your AI agent with hidden prompt-injection removed: invisible text, HTML comments, fake system messages and AI-targeted orders are detected, scored and stripped.",
+  "version": "1.0",
+  "buildTag": "latest",
+  "dockerfile": "./Dockerfile",
+  "readme": "./README.md",
+  "input": {
+    "title": "Safe Web Reader input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+      "urls": {
+        "title": "URLs to read safely",
+        "type": "array",
+        "description": "Pages your AI agent wants to read.",
+        "editor": "stringList",
+        "prefill": [
+          "https://example.com"
+        ]
+      },
+      "maxItems": {
+        "title": "Max URLs",
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 500,
+        "default": 50,
+        "description": "Safety limit for one run."
+      }
+    },
+    "required": [
+      "urls"
+    ]
+  },
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "views": {
+        "overview": {
+          "title": "Results",
+          "transformation": {},
+          "display": {
+            "component": "table"
+          }
+        }
+      }
+    }
+  }
+}
